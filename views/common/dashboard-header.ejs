@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="/css/dashboard.css">
+	<title>MyCat Tool</title>
+	<script>
+	</script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.0/socket.io.js"></script>
+	<script src="/js/common.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1"
+	 crossorigin="anonymous">
+	<link rel="stylesheet" href="/css/tooltip.css">
+	<link rel="stylesheet" href="/css/modal.css">
+</head>
+
+<body>
+	<div class="wrapper">
+		<div class="header">
+			<div class="header-logo"></div>
+			<div class="header-hamburger"></div>
+			<div class="header-search">
+				<div class="header-search-inside">
+					<input type="text" placeholder="Search">
+					<button></button>
+				</div>
+			</div>
+			<div class="header-profile">
+				<div class="header-profile-picture"></div>
+				<span class="header-profile-name"></span>
+			</div>
+		</div>
+		<div class="sidebar">
+			<div class="sidebar-point">
+				<span class="sidebar-point-label">Point</span>
+				<span class="sidebar-point-current current-point" ></span>
+			</div>
+			<div class="sidebar-point">
+				<span class="sidebar-point-label">LC</span>
+				<span class="sidebar-point-current current-token" ></span>
+			</div>
+			<button class="sidebar-bigButton">Exchange</button>
+			<a class="sidebar-navigator" href="/project">
+				<img src="/img/icon_project_default.png" alt="" style="height: 20px;" class="sidebar-navigator-icon">
+				<span>Projects</span>
+				<div class="sidebar-navigator-badge">33</div>
+			</a>
+			<a class="sidebar-navigator">
+					<img src="/img/icon_memory.png" alt="" style="height: 20px;" class="sidebar-navigator-icon">
+				<span>Memory</span>
+			</a>
+			<a class="sidebar-navigator">
+					<img src="/img/icon_participant.png" alt="" style="height: 20px;" class="sidebar-navigator-icon">
+				<span>Participant</span>
+			</a>
+			<a class="sidebar-navigator" href="/actions">
+				<img src="/img/icon_action_default.png" alt="" style="height: 20px;" class="sidebar-navigator-icon">
+				<span>Actions</span>
+			</a>
+		</div>
+		<div class="container">
+			<div class="container-inside">
+				<div style="width: 100%; height: auto; position: relative;">

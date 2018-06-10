@@ -1,0 +1,40 @@
+<%- include('common/dashboard-header') %>
+
+	<span class="dashboard-title">Projects</span>
+	<button class="dashboard-button right-top">+ New Project</button>
+	<span class="dashboard-description">Translate projects</span>
+	<div class="dashboard-select">
+		<select name="" id="">
+			<option value="Created">Created</option>
+			<option value="Created">Modified</option>
+		</select>
+	</div>
+	<table cellspacing="0">
+		<tr>
+			<th width="5.57%">No.</th>
+			<th width="4.85%">Edit</th>
+			<th width="16.76%">Project</th>
+			<th width="12.5%">Progress</th>
+			<th width="12.5%">Condition</th>
+			<th width="12.5%">Owner</th>
+			<th width="17.64%">Created</th>
+			<th width="17.64%">Deadline</th>
+		</tr>
+	</table>
+	<table cellspacing="0" class="project-list">
+		<tr project-id="${id}" class="project-list-item">
+			<td width="5.57%">${id}</td>
+			<td width="4.85%"><img src="/img/icon_edit.png" style="height: 20px;"></td>
+			<td width="16.76%">${name}</td>
+			<td width="12.5%">${progress_percent}%</td>
+			<td width="12.5%">${status}</td>
+			<td width="12.5%">${founder}<img src="/img/logo_steemit.png" style="height: 20px; vertical-align: bottom; margin-left: 4px;"></td>
+			<td width="17.64%">${create_time}</td>
+			<td width="17.64%">${due_date}</td>
+		</tr>
+	</table>
+	<script src="https://cdn.rawgit.com/honeymaro/MaroJS-list-renderer/673631d6/src/list-renderer.js"></script>
+	<script src="/js/common.js"></script>
+	<script src="/js/dashboard/common.js"></script>
+	<script src="/js/dashboard/project.js"></script>
+	<%- include('common/dashboard-footer') %>

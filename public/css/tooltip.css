@@ -1,0 +1,28 @@
+@media screen{
+	.m-tooltip{
+		width: auto;
+		height: auto;
+		position: fixed;
+		overflow: hidden;
+		z-index: 30005;
+		top: unset;
+		right: unset;
+		bottom: unset;
+		left: unset;
+		display: none;
+		background-color: #333;
+		border: 1px solid #333;
+		border-radius: 4px;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+		padding: .4em;
+		color: #fcfcfc;
+		font-size: 15px;
+		opacity: .8;
+	}
+
+	.m-tooltip.show{
+		display: block;
+	}
+}

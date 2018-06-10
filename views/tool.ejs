@@ -1,0 +1,282 @@
+<%- include('common/header') %>
+	<script>
+		var document_id = parseInt("<%- doc_id %>");	
+	</script>
+	<div class="m-modal" id="settings">
+		<div class="m-modal-inside">
+			<div class="setting-panel">
+				<span class="setting-panel-title">Settings</span>
+				<div class="setting-panel-section">
+					<span class="setting-panel-subtitle">Editor</span>
+					<div class="setting-panel-line">
+						<input type="checkbox" id="settingSentencesOneLine">
+						<label for="settingSentencesOneLine">Show a small list of sentences.</label>
+					</div>
+				</div>
+				<div class="setting-panel-section">
+					<span class="setting-panel-subtitle">Hotkey</span>
+					<table>
+						<tr>
+							<td>Previous sentence</td>
+							<td>
+								<input type="text" value="Ctrl + ←" disabled style="width: 100px;" data-tooltip="We will support this feature soon!">
+							</td>
+						</tr>
+						<tr>
+							<td>Next sentence</td>
+							<td>
+								<input type="text" value="Ctrl + →" disabled style="width: 100px;" data-tooltip="We will support this feature soon!">
+							</td>
+						</tr>
+						<tr>
+							<td>Mark complete</td>
+							<td>
+								<input type="text" value="Ctrl + Enter" disabled style="width: 100px;" data-tooltip="We will support this feature soon!">
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="m-modal" id="modal-help">
+		<div class="m-modal-inside">
+			<div class="setting-panel">
+				<span class="setting-panel-title">Help</span>
+				<div class="setting-panel-section">
+					<span class="setting-panel-subtitle">help</span>
+					<div class="setting-panel-line">
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<header class="header">
+		<div class="header-left">
+			<button type="button" class="header-button" style="background-image: url(/img/logo_main.png); background-size: 50%; background-position: 5% 50%; background-repeat: no-repeat; height: 100%; width: 200px;" onclick="location.href='/project';">
+			</button>
+		</div>
+		<div class="header-right">
+			<button type="button" class="header-button" id="user-profile">
+				<span>&nbsp;</span>
+			</button>
+			<button type="button" class="header-button" m-modal-show="#settings">
+				<i class="fas fa-cog"></i>
+			</button>
+			<button type="button" class="header-button" m-modal-show="#modal-help">
+				<i class="fas fa-question-circle"></i>
+			</button>
+		</div>
+	</header>
+	<div class="wrapper">
+		<div class="">
+			<div class="sentences">
+				<div class="sentences-list oneline">
+					<div class="sentences-list-item" sentence-id="${sentence_id}" trans-lang="${trans_lang}" origin-lang="${origin_lang}" trans-status="${trans_status}"
+					 origin-text="${origin_text}" trans-text="${trans_text}" trans-type="${trans_type}">
+						${origin_text}
+					</div>
+				</div>
+				<div class="resizer">
+					<div class="bar"></div>
+				</div>
+			</div>
+			<div class="editor">
+				<div class="editor-inner">
+					<div class="editor-original">
+						<h3>Text for translation</h3>
+						<span class="editor-original-text"></span>
+					</div>
+					<div class="editor-translate">
+						<h3>Enter translation</h3>
+						<textarea class="editor-translate-text"></textarea>
+						<div class="editor-translate-navigator">
+							<i class="fas fa-arrow-left disabled" id="btnPrevious" data-tooltip="Ctrl + ←"></i>
+							<i class="fas fa-arrow-right disabled" id="btnNext" data-tooltip="Ctrl + →"></i>
+							<i class="fas fa-check disabled" id="btnSave" data-tooltip="Ctrl + Enter"></i>
+						</div>
+					</div>
+					<div class="editor-assistant">
+						<div class="editor-assistant-fixed">
+
+							<div class="editor-assistant-mt-list">
+								<div class="editor-assistant-mt-list-item" trans-text="${result}">
+									<div class="editor-assistant-mt-list-item-score"></div>
+									<div class="editor-assistant-mt-list-item-sentence">
+										<div class="editor-assistant-mt-list-item-translated">${result}</div>
+										<br>
+										<div class="editor-assistant-mt-list-item-original">${source}</div>
+									</div>
+								</div>
+							</div>
+							<div class="editor-assistant-tm-list">
+								<div class="editor-assistant-tm-list-item" score="${score}" tm-id="${tm_id}" origin-text="${origin_text}" trans-text="${trans_text}"
+								 username="${username}" user-id="${user_id}">
+									<div class="editor-assistant-tm-list-item-score">${score}% match</div>
+									<div class="editor-assistant-tm-list-item-sentence">
+										<div class="editor-assistant-tm-list-item-translated">${trans_text}</div>
+										<br>
+										<div class="editor-assistant-tm-list-item-original">${origin_text}</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="editor-assistant-tb-list">
+								<div class="editor-assistant-tb-list-item" term-id="${term_id}" origin-text="${origin_text}" trans-text="${trans_text}" username="${username}"
+								 user-id="${user_id}">
+									<div class="editor-assistant-tb-list-item-score"></div>
+									<div class="editor-assistant-tb-list-item-sentence">
+										<div class="editor-assistant-tb-list-item-translated">${trans_text}</div>
+										<br>
+										<div class="editor-assistant-tb-list-item-original">${origin_text}</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="editor-assistant-flexibled">
+
+						</div>
+					</div>
+
+				</div>
+
+				<div class="resizer">
+					<div class="bar"></div>
+				</div>
+			</div>
+			<div class="others">
+				<div class="others-list">
+					<div class="others-list-item">Information</div>
+					<!-- <div class="others-list-item">Comunication</div> -->
+					<div class="others-list-item" id="others-sentence-comunication">Comment</div>
+				</div>
+				<div class="others-tabs">
+					<div class="others-tabs-item">
+						<div class="document-information">
+							<div class="document-information-line">
+								<span class="document-information-label">
+									Document name
+								</span>
+								<span class="document-information-content" id="docs-title">
+
+								</span>
+							</div>
+							<div class="document-information-line">
+								<span class="document-information-label">
+									Document status
+								</span>
+								<span class="document-information-content" id="docs-status">
+
+								</span>
+							</div>
+							<div class="document-information-line">
+								<span class="document-information-label">
+									Original text link
+								</span>
+								<span class="document-information-content" id="docs-link">
+
+								</span>
+							</div>
+							<div class="document-information-line">
+								<span class="document-information-label">
+									Translation language
+								</span>
+								<span class="document-information-content">
+									<span id="docs-original-language"></span> to
+									<span id="docs-target-language"></span>
+								</span>
+							</div>
+							<div class="document-information-line">
+								<span class="document-information-label">
+									Due date
+								</span>
+								<span class="document-information-content" id="docs-due-date">
+
+								</span>
+							</div>
+						</div>
+					</div>
+					<!-- <div class="others-tabs-item">
+						<div class="comunication">
+							<div class="comunication-chat">
+								<div class="comunication-chat-list" id="comunication-chat-document">
+									<div class="comunication-chat-list-item" comment-id="${comment_id}" doc-id="${doc_id}" sentence-id="${sentence_id}" user-id="${user_id}"
+									 name="${name}" comment="${comment}" create-time="${create_time}">
+										<div class="comunication-chat-list-item-profile">
+											<div class="comunication-chat-list-item-profile-picture"></div>
+										</div>
+										<div class="comunication-chat-list-item-text">
+											<span class="comunication-chat-list-item-text-name">
+												${name}
+											</span>
+											<span class="comunication-chat-list-item-text-comment">
+												${comment}
+											</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<form class="comunication-insert" target="document">
+								<textarea class="comunication-insert-textarea" placeholder="Leave a new comment here." name="comment"></textarea>
+								<button type="submit" class="comunication-insert-submit">
+									<i class="fas fa-chevron-circle-right"></i>
+								</button>
+							</form>
+						</div>
+					</div> -->
+					<div class="others-tabs-item">
+						<div class="comunication" id="comunication-sentence">
+							<div class="comunication-chat">
+								<div class="comunication-chat-list">
+									<div class="comunication-chat-list-item" comment-id="${comment_id}" doc-id="${doc_id}" sentence-id="${sentence_id}" user-id="${user_id}"
+									 name="${name}" comment="${comment}" create-time="${create_time}">
+										<div class="comunication-chat-list-item-profile">
+											<div class="comunication-chat-list-item-profile-picture"></div>
+										</div>
+										<div class="comunication-chat-list-item-text">
+											<span class="comunication-chat-list-item-text-name">
+												${name}
+											</span>
+											<span class="comunication-chat-list-item-text-time">
+												${new Date(create_time).toLocaleString()}
+											</span>
+											<span class="comunication-chat-list-item-text-comment">
+												${comment}
+											</span>
+											<div class="comunication-chat-list-item-menu">
+												<i class="fas fa-times comunication-chat-list-item-menu-delete"></i>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<form class="comunication-insert" target="sentence" sentence-id="">
+								<div class="comunication-insert-inside">
+									<div class="comunication-insert-inside-profile">
+										<div class="comunication-insert-inside-profile-picture"></div>
+									</div>
+									<div class="comunication-insert-inside-text">
+										<span class="comunication-insert-inside-text-name">
+											<%- userInformation.user_nickname %>
+										</span>
+										<textarea class="comunication-insert-inside-textarea comunication-insert-textarea" placeholder="Leave a new comment here."
+										 name="comment" rows="1"></textarea>
+									</div>
+								</div>
+								<!-- <button type="submit" class="comunication-insert-submit">
+									<i class="fas fa-chevron-circle-right"></i>
+								</button> -->
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://rawgit.com/honeymaro/MaroJS-list-renderer/master/src/list-renderer.js"></script>
+	<script src="/js/tooltip.js"></script>
+	<script src="/js/modal.js"></script>
+	<script src="/js/tool.js"></script>
+	<%- include('common/footer') %>
